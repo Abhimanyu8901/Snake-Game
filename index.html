@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classic Snake</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hud">
+      <h1>Snake</h1>
+      <div class="stats">
+        <span>Score: <strong id="score">0</strong></span>
+        <span>Status: <strong id="status">Running</strong></span>
+      </div>
+      <div class="actions">
+        <button id="pauseBtn" type="button">Pause</button>
+        <button id="restartBtn" type="button">Restart</button>
+        <label class="speed-control" for="speedSelect">
+          Speed
+          <select id="speedSelect" aria-label="Snake speed">
+            <option value="180">Slow</option>
+            <option value="120" selected>Normal</option>
+            <option value="90">Fast</option>
+            <option value="65">Very Fast</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <section class="board-wrap" aria-label="Snake game board">
+      <div id="board" class="board" role="grid"></div>
+    </section>
+
+    <section class="controls" aria-label="On-screen controls">
+      <div class="controls-grid">
+        <button type="button" data-dir="up">Up</button>
+        <button type="button" data-dir="left">Left</button>
+        <button type="button" data-dir="down">Down</button>
+        <button type="button" data-dir="right">Right</button>
+      </div>
+      <p class="hint">Use Arrow Keys or WASD. Press Space to pause/resume.</p>
+    </section>
+  </main>
+
+  <script type="module" src="./snake.js"></script>
+</body>
+</html>
