@@ -66,6 +66,30 @@ run('wall collision ends game', () => {
 
   const next = stepState(state, cfg, () => 0);
   assert.equal(next.isOver, true);
+  assert.equal(next.gameOverReason, 'wall');
+});
+
+run('self collision reports the correct game over reason', () => {
+  const state = {
+    snake: [
+      { x: 3, y: 2 },
+      { x: 3, y: 3 },
+      { x: 2, y: 3 },
+      { x: 2, y: 2 },
+      { x: 2, y: 1 },
+      { x: 3, y: 1 },
+    ],
+    direction: { x: -1, y: 0 },
+    nextDirection: { x: -1, y: 0 },
+    food: { x: 7, y: 7 },
+    score: 2,
+    isOver: false,
+    gameOverReason: null,
+  };
+
+  const next = stepState(state, cfg, () => 0);
+  assert.equal(next.isOver, true);
+  assert.equal(next.gameOverReason, 'self');
 });
 
 run('food placement avoids snake body', () => {

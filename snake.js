@@ -16,6 +16,7 @@ const statusEl = document.getElementById('status');
 const pauseBtn = document.getElementById('pauseBtn');
 const restartBtn = document.getElementById('restartBtn');
 const speedSelect = document.getElementById('speedSelect');
+const gameOverModal = document.getElementById('gameOverModal');
 const controlButtons = Array.from(document.querySelectorAll('[data-dir]'));
 
 let state = createInitialState(config);
@@ -56,6 +57,16 @@ function setStatusText() {
   statusEl.textContent = paused ? 'Paused' : 'Running';
 }
 
+function updateGameOverModal() {
+  if (!gameOverModal) {
+    return;
+  }
+
+  const isVisible = state.isOver;
+  gameOverModal.classList.toggle('hidden', !isVisible);
+  gameOverModal.setAttribute('aria-hidden', String(!isVisible));
+}
+
 function render() {
   const cells = board.children;
   for (let i = 0; i < cells.length; i += 1) {
@@ -86,6 +97,7 @@ function render() {
 
   scoreEl.textContent = String(state.score);
   setStatusText();
+  updateGameOverModal();
 }
 
 function tick() {

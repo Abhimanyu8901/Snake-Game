@@ -63,6 +63,7 @@ export function createInitialState(config, rng = Math.random) {
     food: placeFood(snake, config.width, config.height, rng),
     score: 0,
     isOver: false,
+    gameOverReason: null,
   };
 }
 
@@ -92,6 +93,7 @@ export function stepState(state, config, rng = Math.random) {
       direction,
       nextDirection: direction,
       isOver: true,
+      gameOverReason: hitBody ? 'self' : 'wall',
     };
   }
 
@@ -110,5 +112,6 @@ export function stepState(state, config, rng = Math.random) {
     food: nextFood,
     score: eatsFood ? state.score + 1 : state.score,
     isOver: nextFood === null ? true : false,
+    gameOverReason: nextFood === null ? 'win' : null,
   };
 }

@@ -105,6 +105,7 @@ button:active {
 .board-wrap {
   margin-top: 12px;
   padding: 10px;
+  position: relative;
 }
 
 .board {
@@ -219,6 +220,29 @@ button:active {
 .controls {
   margin-top: 12px;
   padding: 12px;
+}
+
+.game-over-modal {
+  position: absolute;
+  inset: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 10, 24, 0.5);
+  border-radius: 10px;
+}
+
+.game-over-modal.hidden {
+  display: none;
+}
+
+.game-over-card {
+  width: min(76%, 220px);
+  height: min(24%, 120px);
+  background: rgba(7, 15, 35, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
 }
 
 .controls-grid {
